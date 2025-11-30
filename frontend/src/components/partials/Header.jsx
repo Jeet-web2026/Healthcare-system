@@ -1,6 +1,6 @@
-const Header = () => {
+const Header = ({ animatedClass }) => {
   return (
-    <div className="lg:flex items-center py-4 lg:bg-transparent bg-blue-50 justify-between">
+    <div className={"lg:flex items-center py-4 lg:bg-transparent bg-blue-50 justify-between " + animatedClass}>
       <div className="lg:flex hidden items-center gap-5">
         <div className="flex items-center gap-2">
           <span className="bg-cyan-400 text-white px-2 py-1 rounded-full">

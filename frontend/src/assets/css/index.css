@@ -2,3 +2,9 @@
   font-family: "Figtree", sans-serif;
   font-optical-sizing: auto;
 }
+
+body {
+  background-color: #f3f3ff !important;
+  height: 100%;
+  width: 100%;
+}

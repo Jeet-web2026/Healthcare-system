@@ -1,7 +1,11 @@
-import Navbar from "../components/Navbar";
+import Navigationsection from "../components/Navigationsection";
 
 const Home = () => {
-  return <Navbar />;
+  return (
+    <>
+      <Navigationsection />
+    </>
+  );
 };
 
 export default Home;

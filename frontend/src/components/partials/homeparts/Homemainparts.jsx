@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import backgroundImage from "../../../assets/images/main-bg.jpg";
+import Button from "../Button";
 
 const Homemainparts = () => {
   return (
@@ -30,16 +31,16 @@ const Homemainparts = () => {
           </p>
         </div>
         <div className="flex flex-row items-center gap-3">
-          <button className="bg-cyan-500 text-white px-8 cursor-pointer py-3 rounded-md flex items-center">
-            <i className="ri-phone-line lg:me-2 text-2xl"></i> <span className="hidden lg:block">Call Us Today: +91
-            9163715179</span>
-          </button>
-          <Link
-            to="/make-appointment"
-            className="bg-cyan-500 px-5 py-3 rounded-md text-white flex items-center"
-          >
-            <i className="ri-calendar-schedule-line text-2xl mr-2"></i>Appointment
-          </Link>
+          <Button
+            text="Call Us Today: +91 9163715179"
+            icon={<i className="ri-phone-line"></i>}
+            textclass={`lg:block hidden`}
+            iconclass={`rounded-r-4xl lg:rounded-r-none`}
+          />
+          <Button
+            text="Appointment"
+            icon={<i className="ri-calendar-schedule-line"></i>}
+          />
         </div>
       </div>
       <div className="lg:w-1/3 w-full"></div>

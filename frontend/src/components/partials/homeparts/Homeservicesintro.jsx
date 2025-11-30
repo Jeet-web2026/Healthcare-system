@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Image_1 from "../../../assets/images/who-we-are-1.jpg";
 import Image_2 from "../../../assets/images/who-we-are-2.jpg";
+import Button from "../Button";
 
 const Homeservicesintro = () => {
   return (
@@ -9,7 +10,7 @@ const Homeservicesintro = () => {
         <p className="capitalize text-blue-900 font-semibold">
           caring for you starts with who we are
         </p>
-        <h3 className="text-4xl font-semibold">
+        <h3 className="lg:text-4xl text-3xl font-semibold">
           Investing in Your Health, Investing in Your Future
         </h3>
         <p className="text-gray-600">
@@ -65,14 +66,11 @@ const Homeservicesintro = () => {
               Our experienced professionals are here to provide care that’s not
               only expert but also truly personalized and empathetic.
             </p>
-            <Link to={"read-more/5"} className="flex flex-row gap-1">
-              <span className="bg-blue-900 w-30 text-center rounded-l-4xl py-2 text-white ">
-                Read more
-              </span>
-              <span className="bg-cyan-600 w-12 flex justify-center items-center rounded-r-4xl">
-                <i className="ri-arrow-right-long-line text-white text-lg"></i>
-              </span>
-            </Link>
+            <Button
+              text={`Read more`}
+              icon={<i className="ri-arrow-right-long-line"></i>}
+              transform={true}
+            />
           </div>
         </div>
       </div>

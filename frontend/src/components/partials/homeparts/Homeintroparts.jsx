@@ -3,7 +3,7 @@ const Homeintroparts = () => {
     <section className="bg-blue-900 px-5 py-14 lg:rounded-2xl lg:mt-4 text-white flex flex-col gap-10">
       <div className="gap-5 lg:gap-0 flex flex-col lg:flex-row lg:mb-5">
         <div className="lg:w-1/2 w-full">
-          <h3 className="capitalize text-4xl font-medium">
+          <h3 className="capitalize lg:text-4xl text-3xl font-medium">
             our only priority is to keep you healthy
           </h3>
         </div>

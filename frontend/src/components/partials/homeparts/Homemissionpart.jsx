@@ -1,6 +1,37 @@
 import { Link } from "react-router-dom";
+import Slick from "../Slick";
 
 const Homemissionpart = () => {
+  const SlickData = [
+    {
+      id: 1,
+      icon: <i className="ri-stethoscope-line"></i>,
+      title: "Radiology",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem deserunt consectetur amet asperiores harum illo dicta voluptatum cumque eveniet soluta consequuntur repellat, maxime nihil fugiat.",
+    },
+    {
+      id: 2,
+      icon: <i className="ri-stethoscope-line"></i>,
+      title: "Radiology",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem deserunt consectetur amet asperiores harum illo dicta voluptatum cumque eveniet soluta consequuntur repellat, maxime nihil fugiat.",
+    },
+    {
+      id: 3,
+      icon: <i className="ri-stethoscope-line"></i>,
+      title: "Radiology",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem deserunt consectetur amet asperiores harum illo dicta voluptatum cumque eveniet soluta consequuntur repellat, maxime nihil fugiat.",
+    },
+    {
+      id: 4,
+      icon: <i className="ri-stethoscope-line"></i>,
+      title: "Radiology",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem deserunt consectetur amet asperiores harum illo dicta voluptatum cumque eveniet soluta consequuntur repellat, maxime nihil fugiat.",
+    },
+  ];
   return (
     <section className="bg-blue-900 py-14 px-5 lg:rounded-2xl">
       <div className="flex items-center lg:flex-row flex-col gap-6 lg:gap-0">
@@ -50,6 +81,15 @@ const Homemissionpart = () => {
           </Link>
         </div>
       </div>
+      <Slick
+        baseclass="mt-8 grid grid-cols-1"
+        dots={false}
+        scroll={1}
+        show={3}
+        cardclass={`bg-blue-800 p-5 rounded-xl shadow-sm border border-blue-700 text-white flex flex-col gap-5`}
+        carddata={SlickData}
+        autoplay={true}
+      />
     </section>
   );
 };

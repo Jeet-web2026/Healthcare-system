@@ -17,7 +17,7 @@ const Homeservicesintro = () => {
           empathy, professionalism, and a dedication to delivering the highest
           standard of care for every patient we serve.
         </p>
-        <div className="flex lg:flex-row flex-col lg:gap-8 gap-2 mt-6">
+        <div className="flex lg:flex-row flex-col lg:gap-8 gap-2 lg:mt-6">
           <ul className="text-md font-medium gap-1.5 flex flex-col">
             <li>
               <i className="ri-check-double-line text-green-600 me-2 text-2xl"></i>

@@ -5,23 +5,9 @@ const Navbar = () => {
   return (
     <div className="navbar bg-blue-900 lg:rounded-xl lg:p-5 p-4">
       <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {" "}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
-            </svg>
+        <div className="dropdown me-3">
+          <div tabIndex={0} role="button" className="lg:hidden text-lg">
+            <i className="ri-menu-2-line text-white"></i>
           </div>
           <ul
             tabIndex="-1"
@@ -123,7 +109,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end lg:gap-5 gap-2">
         <button className="border px-2.5 py-1.5 cursor-pointer text-white rounded-full">
-          <i className="ri-search-2-line text-xl"></i>
+          <i className="ri-search-2-line lg:text-xl"></i>
         </button>
         <Link
           to={"/get-started"}
@@ -134,11 +120,11 @@ const Navbar = () => {
             <i className="ri-arrow-right-long-line ml-5"></i>
           </span>
           <span className="lg:hidden">
-            <i className="ri-calendar-schedule-line text-xl"></i>
+            <i className="ri-calendar-schedule-line"></i>
           </span>
         </Link>
         <button className="bg-red-700 text-white px-2 py-1 rounded-full cursor-pointer">
-          <i className="ri-add-line text-3xl"></i>
+          <i className="ri-add-line lg:text-3xl text-2xl"></i>
         </button>
       </div>
     </div>

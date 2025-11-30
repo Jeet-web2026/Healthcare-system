@@ -1,9 +1,12 @@
-import Navigationsection from "../components/Navigationsection";
+import Homebodysection from "../components/Homebodysection";
+import Baselayouts from "../components/layouts/Baselayouts";
 
 const Home = () => {
   return (
     <>
-      <Navigationsection />
+      <Baselayouts>
+        <Homebodysection />
+      </Baselayouts>
     </>
   );
 };

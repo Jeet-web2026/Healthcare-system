@@ -1,6 +1,4 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/images/base-logo.png";
-
 const Navbar = () => {
   return (
     <div className="navbar bg-blue-900 lg:rounded-xl lg:p-5 p-4">

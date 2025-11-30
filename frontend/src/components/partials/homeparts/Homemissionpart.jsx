@@ -18,21 +18,21 @@ const Homemissionpart = () => {
             at.
           </p>
         </div>
-        <div className="lg:w-1/3 w-full flex lg:flex-row flex-col gap-3">
+        <div className="lg:w-1/3 w-full flex lg:flex-row flex-col gap-3 items-center">
           <Link
             to={"/read-more/6"}
-            className="flex flex-row gap-1 items-center lg:block hidden"
+            className="flex flex-row gap-1 items-center lg:block hidden w-1/2"
           >
-            <span className="border border-white lg:px-8 py-3.5 rounded-l-4xl text-white">
+            <span className="border border-white lg:px-8 py-4 rounded-l-4xl text-white">
               Read more
             </span>
-            <span className="bg-cyan-400 px-4 py-3.5 rounded-r-4xl text-white">
+            <span className="bg-cyan-400 px-4 py-4 border border-cyan-400 rounded-r-4xl text-white">
               <i className="ri-arrow-right-long-line"></i>
             </span>
           </Link>
           <Link
             to={"/read-more/6"}
-            className="bg-transparent border border-white rounded-4xl text-white px-8 lg:py-4 py-4"
+            className="bg-transparent border border-white rounded-4xl text-white px-8 lg:py-4 py-4 lg:hidden w-full"
           >
             <span className="flex justify-center items-center">
               Read more
@@ -41,7 +41,7 @@ const Homemissionpart = () => {
           </Link>
           <Link
             to={"/make-appointment"}
-            className="bg-white rounded-4xl text-blue-800 px-8 lg:py-4 py-4"
+            className="bg-white rounded-4xl text-blue-800 px-8 lg:py-4 py-4 lg:w-1/2 w-full"
           >
             <span className="flex justify-center items-center">
               Appointment

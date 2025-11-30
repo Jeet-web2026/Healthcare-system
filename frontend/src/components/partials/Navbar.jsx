@@ -110,7 +110,7 @@ const Navbar = () => {
           <i className="ri-search-2-line lg:text-xl"></i>
         </button>
         <Link
-          to={"/get-started"}
+          to={"/make-appointment"}
           className="bg-white rounded-3xl text-blue-800 lg:px-7 lg:py-3 px-3 py-2 lg:ml-2"
         >
           <span className="flex hidden lg:block">

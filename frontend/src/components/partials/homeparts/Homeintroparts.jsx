@@ -1,7 +1,7 @@
 const Homeintroparts = () => {
   return (
     <section className="bg-blue-900 px-5 py-14 lg:rounded-2xl lg:mt-4 text-white flex flex-col gap-10">
-      <div className="gap-8 lg:gap-0 flex flex-col lg:flex-row lg:mb-5">
+      <div className="gap-5 lg:gap-0 flex flex-col lg:flex-row lg:mb-5">
         <div className="lg:w-1/2 w-full">
           <h3 className="capitalize text-4xl font-medium">
             our only priority is to keep you healthy

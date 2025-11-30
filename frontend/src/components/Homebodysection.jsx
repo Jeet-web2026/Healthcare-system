@@ -1,5 +1,6 @@
 import Homeintroparts from "./partials/homeparts/Homeintroparts";
 import Homemainparts from "./partials/homeparts/Homemainparts";
+import Homemissionpart from "./partials/homeparts/Homemissionpart";
 import Homeservicesintro from "./partials/homeparts/Homeservicesintro";
 
 const Homebodysection = () => {
@@ -8,6 +9,7 @@ const Homebodysection = () => {
       <Homemainparts />
       <Homeintroparts />
       <Homeservicesintro />
+      <Homemissionpart />
     </>
   );
 };

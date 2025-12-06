@@ -82,7 +82,7 @@ const Homemissionpart = () => {
         </div>
       </div>
       <Slick
-        baseclass="mt-8 grid grid-cols-1"
+        baseclass="mt-8"
         dots={false}
         scroll={1}
         show={3}

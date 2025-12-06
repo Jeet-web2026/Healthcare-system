@@ -1,74 +1,31 @@
-import { Link } from "react-router-dom";
-import Slider from "react-slick";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
-const Slick = ({
-  baseclass,
-  dots,
-  show,
-  scroll,
-  carddata,
-  cardclass,
-  autoplay,
-}) => {
-  const settings = {
-    dots: dots === "true",
-    infinite: true,
-    speed: 500,
-    slidesToShow: Number(show),
-    slidesToScroll: Number(scroll),
-    arrows: false,
-    autoplay: autoplay,
-    responsive: [
-      {
-        breakpoint: 1280, // Large devices
-        settings: {
-          slidesToShow: Math.min(Number(show), 3),
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 1024, // Tablet landscape
-        settings: {
-          slidesToShow: Math.min(Number(show), 3),
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768, // Tablet portrait
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 480, // Mobile
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true,
-        },
-      },
-    ],
-  };
-
+export default function Slick({ carddata = [], show, baseclass, cardclass }) {
   return (
     <div className={baseclass}>
-      <Slider {...settings}>
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={Number(show)}
+        breakpoints={{
+          1536: { slidesPerView: Number(show) },
+          1280: { slidesPerView: Math.min(Number(show), 4) },
+          1024: { slidesPerView: Math.min(Number(show), 3) },
+          768: { slidesPerView: 2 },
+          480: { slidesPerView: 1 },
+          0: { slidesPerView: 1 },
+        }}
+      >
         {carddata.map((item) => (
-          <div className="pr-5">
-            <Link to={"/department/" + item.id}>
-              <div key={item.id} className={cardclass}>
-                <span className="text-4xl">{item.icon}</span>
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="text-sm">{item.description}</p>
-              </div>
-            </Link>
-          </div>
+          <SwiperSlide key={item.id}>
+            <div className={cardclass}>
+              <span className="text-4xl">{item.icon}</span>
+              <h3 className="text-xl font-semibold">{item.title}</h3>
+              <p className="text-sm">{item.description}</p>
+            </div>
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
     </div>
   );
-};
-
-export default Slick;
+}

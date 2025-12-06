@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
-const Slick = ({ baseclass, dots, show, scroll, carddata, cardclass, autoplay }) => {
+const Slick = ({
+  baseclass,
+  dots,
+  show,
+  scroll,
+  carddata,
+  cardclass,
+  autoplay,
+}) => {
   const settings = {
     dots: dots === "true",
     infinite: true,
@@ -10,6 +18,38 @@ const Slick = ({ baseclass, dots, show, scroll, carddata, cardclass, autoplay })
     slidesToScroll: Number(scroll),
     arrows: false,
     autoplay: autoplay,
+    responsive: [
+      {
+        breakpoint: 1280, // Large devices
+        settings: {
+          slidesToShow: Math.min(Number(show), 3),
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1024, // Tablet landscape
+        settings: {
+          slidesToShow: Math.min(Number(show), 3),
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // Tablet portrait
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 480, // Mobile
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+        },
+      },
+    ],
   };
 
   return (

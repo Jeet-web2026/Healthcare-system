@@ -1,12 +1,24 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-export default function Slick({ carddata = [], show, baseclass, cardclass }) {
+export default function Slick({
+  baseclass,
+  dots,
+  show,
+  carddata,
+  cardclass,
+  autoplay,
+}) {
   return (
     <div className={baseclass}>
       <Swiper
         spaceBetween={20}
         slidesPerView={Number(show)}
+        pagination={dots === "true" ? { clickable: true } : false}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         breakpoints={{
           1536: { slidesPerView: Number(show) },
           1280: { slidesPerView: Math.min(Number(show), 4) },

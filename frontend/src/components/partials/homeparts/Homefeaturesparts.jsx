@@ -32,15 +32,15 @@ const Homefeaturesparts = () => {
     },
   ];
   return (
-    <section className="px-5 py-20 bg-blue-900 rounded-xl">
+    <section className="px-5 lg:py-20 py-10 bg-blue-900 lg:rounded-xl">
       <div className="flex lg:flex-row flex-col items-center text-white">
         <div className="flex flex-col gap-3 lg:w-190 w-full">
           <p className="capitalize font-medium text-xl">
             How We Work to Put Your Health First
           </p>
-          <h2 className="text-4xl font-semibold">Featured news and insights</h2>
+          <h2 className="lg:text-4xl text-3xl font-semibold">Featured news and insights</h2>
         </div>
-        <p className="w-fit">
+        <p className="w-fit lg:mt-0 mt-6">
           Stay updated with the latest news from MediCross, along with important
           medical developments and healthcare trends from around the world. Nam
           porttitor ullamcorper lorem, ut venenatis lacus semper at. Ut
@@ -48,11 +48,11 @@ const Homefeaturesparts = () => {
         </p>
       </div>
         <Slick
-          baseclassName="mt-18"
+          baseclass="lg:mt-14 mt-8"
           dots={false}
           scroll={1}
           show={4}
-          cardclassName={`bg-transparent px-6 py-14 rounded-xl shadow-sm border border-blue-700 text-white flex flex-col gap-5 hover:bg-white duration-300 ease-in-out hover:text-black transition-all cursor-pointer`}
+          cardclass={`bg-transparent px-6 py-14 rounded-xl shadow-sm border border-blue-700 text-white flex flex-col gap-5 hover:bg-white duration-300 ease-in-out hover:text-black transition-all cursor-pointer`}
           carddata={SlickData}
           autoplay={true}
         />

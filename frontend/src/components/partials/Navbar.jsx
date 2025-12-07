@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
-    <div className="navbar bg-blue-900 lg:rounded-xl lg:p-5 p-4">
+    <nav className="navbar bg-blue-900 lg:rounded-xl lg:p-5 p-4">
       <div className="navbar-start">
         <div className="dropdown me-3">
           <div tabIndex={0} role="button" className="lg:hidden text-lg">
@@ -125,7 +125,7 @@ const Navbar = () => {
           <i className="ri-add-line lg:text-3xl text-2xl"></i>
         </button>
       </div>
-    </div>
+    </nav>
   );
 };
 

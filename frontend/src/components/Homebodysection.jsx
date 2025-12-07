@@ -1,3 +1,4 @@
+import Homeappointmentpart from "./partials/homeparts/Homeappointmentpart";
 import Homefeaturesparts from "./partials/homeparts/Homefeaturesparts";
 import Homeintroparts from "./partials/homeparts/Homeintroparts";
 import Homemainparts from "./partials/homeparts/Homemainparts";
@@ -14,6 +15,7 @@ const Homebodysection = () => {
       <Homemissionpart />
       <Homestratagy />
       <Homefeaturesparts />
+      <Homeappointmentpart />
     </>
   );
 };

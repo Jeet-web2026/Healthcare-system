@@ -1,5 +1,6 @@
 import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { fonts } from '../font';
 
 export default function HomeScreen() {
   const theme = useColorScheme();
@@ -12,9 +13,16 @@ export default function HomeScreen() {
         isDark ? styles.darkBackground : styles.lightBackground
       ]}
     >
-      <Text style={isDark ? styles.darkText : styles.lightText}>
-        Hello world
-      </Text>
+      <View style={styles.topSection}>
+        <Text
+          style={[
+            styles.welcomeText,
+            isDark ? styles.darkText : styles.lightText
+          ]}
+        >
+          Sign Up
+        </Text>
+      </View>
     </SafeAreaView>
   );
 }
@@ -22,17 +30,28 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 16,
   },
   darkBackground: {
-    backgroundColor: '#1111111',
+    backgroundColor: '#111111',
   },
   lightBackground: {
     backgroundColor: '#ffffff',
   },
   darkText: {
-    color: '#ffffff',
+    color: '#6599FF',
+    fontFamily: fonts.semibold,
   },
   lightText: {
-    color: '#000000',
+    color: '#6599FF',
+    fontFamily: fonts.semibold,
   },
+  topSection: {
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  welcomeText: {
+    fontSize: 30,
+  }
 });

@@ -1,11 +1,11 @@
 import Homeappointmentguide from "./partials/homeparts/Homeappointmentguide";
-import Homeappointmentpart from "./partials/homeparts/Homeappointmentpart";
 import Homefeaturesparts from "./partials/homeparts/Homefeaturesparts";
 import Homeintroparts from "./partials/homeparts/Homeintroparts";
 import Homemainparts from "./partials/homeparts/Homemainparts";
 import Homemissionpart from "./partials/homeparts/Homemissionpart";
 import Homeservicesintro from "./partials/homeparts/Homeservicesintro";
 import Homestratagy from "./partials/homeparts/Homestratagy";
+import Homeupdatesparts from "./partials/homeparts/Homeupdatesparts";
 
 const Homebodysection = () => {
   return (
@@ -16,8 +16,8 @@ const Homebodysection = () => {
       <Homemissionpart />
       <Homestratagy />
       <Homefeaturesparts />
-      <Homeappointmentpart />
       <Homeappointmentguide />
+      <Homeupdatesparts />
     </>
   );
 };

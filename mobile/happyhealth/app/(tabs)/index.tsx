@@ -1,28 +1,15 @@
-import { StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { fonts } from '../font';
 
 export default function HomeScreen() {
-  const theme = useColorScheme();
-  const isDark = theme === 'dark';
-
   return (
     <SafeAreaView
       style={[
         styles.container,
-        isDark ? styles.darkBackground : styles.lightBackground
+        styles.baseBackground
       ]}
     >
-      <View style={styles.topSection}>
-        <Text
-          style={[
-            styles.welcomeText,
-            isDark ? styles.darkText : styles.lightText
-          ]}
-        >
-          Sign Up
-        </Text>
-      </View>
     </SafeAreaView>
   );
 }
@@ -32,26 +19,38 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
   },
-  darkBackground: {
-    backgroundColor: '#111111',
-  },
-  lightBackground: {
+  baseBackground: {
     backgroundColor: '#ffffff',
   },
-  darkText: {
-    color: '#6599FF',
-    fontFamily: fonts.semibold,
+  basicText: {
+    color: '#1c398e',
   },
-  lightText: {
-    color: '#6599FF',
-    fontFamily: fonts.semibold,
+  secondaryText: {
+    color: '#6599FF'
   },
-  topSection: {
-    height: 200,
-    justifyContent: 'center',
+  textWhite: {
+    color: '#ffffff',
+  },
+  inputLabel: {
+    fontFamily: fonts.medium,
+    fontSize: 20,
+    marginBottom: 10,
+  },
+  input: {
+    borderColor: '#1c398e',
+    borderWidth: 1,
+    padding: 18,
+    height: 55,
+    borderRadius: 5,
+  },
+  submitButton: {
+    backgroundColor: '#5A9BFF',
+    paddingVertical: 15,
     alignItems: 'center',
+    borderRadius: 10,
   },
-  welcomeText: {
-    fontSize: 30,
+  buttonText: {
+    fontFamily: fonts.semibold,
+    fontSize: 22,
   }
 });

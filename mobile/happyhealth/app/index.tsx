@@ -1,13 +1,53 @@
-import { StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { fonts } from './font';
 import { useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
+import { useState } from 'react';
 
 export default function HomeScreen() {
     const router = useRouter();
+
+    const prevFormData = {
+        email: '',
+        password: '',
+        confirmPassword: ''
+    }
+
+    const prevAgree = false;
+
+    const [getAgree, setAgree] = useState(prevAgree);
+    type FormData = {
+        email: string;
+        password: string;
+        confirmPassword: string;
+    };
+    const [getFormData, setFormData] = useState<FormData>(prevFormData);
+    const handleChange = (key: keyof FormData, value: string) => {
+        setFormData({
+            ...getFormData,
+            [key]: value
+        });
+    }
     const submitSignupForm = () => {
-        router.replace('/(tabs)');
+        try {
+            if (!getFormData.email || !getFormData.password || !getFormData.confirmPassword) {
+                Alert.alert('Error', 'Please fill all the fields');
+                return;
+            }
+            if (getFormData.password !== getFormData.confirmPassword) {
+                Alert.alert('Error', 'Password does not match!');
+                return;
+            }
+            if (!getAgree) {
+                Alert.alert('Error', 'Please agree the terms and conditions')
+                return;
+            }
+            setFormData(prevFormData);
+            setAgree(prevAgree);
+        } catch (error) {
+            Alert.alert('Error', 'Unexpected error occured! ' + error);
+        }
     }
     return (
         <SafeAreaView
@@ -36,6 +76,8 @@ export default function HomeScreen() {
                         style={styles.input}
                         placeholderTextColor='#1c398e'
                         keyboardType='email-address'
+                        value={getFormData.email}
+                        onChangeText={(text) => handleChange('email', text)}
                     />
                 </View>
                 <View>
@@ -47,6 +89,8 @@ export default function HomeScreen() {
                         style={styles.input}
                         placeholderTextColor='#1c398e'
                         secureTextEntry={true}
+                        value={getFormData.password}
+                        onChangeText={(text) => handleChange('password', text)}
                     />
                 </View>
                 <View>
@@ -58,10 +102,15 @@ export default function HomeScreen() {
                         style={styles.input}
                         placeholderTextColor='#1c398e'
                         secureTextEntry={true}
+                        value={getFormData.confirmPassword}
+                        onChangeText={(text) => handleChange('confirmPassword', text)}
                     />
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Switch />
+                    <Switch
+                        value={getAgree}
+                        onValueChange={setAgree}
+                    />
                     <Text style={[
                         styles.basicText,
                         styles.checkboxFont
@@ -85,7 +134,7 @@ export default function HomeScreen() {
                         <Text style={styles.socialText}>Facebook</Text>
                     </TouchableOpacity>
                 </View>
-
+                <Text style={styles.signIntext}>Already have an account? <Text style={{ color: 'blue', fontFamily: fonts.medium, textDecorationLine: 'underline' }}>Sign In</Text></Text>
             </View>
         </SafeAreaView>
     );
@@ -109,7 +158,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
     },
     topSection: {
-        height: 150,
+        height: 115,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -186,5 +235,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontFamily: fonts.medium,
     },
-
+    signIntext: {
+        textAlign: 'center',
+        fontFamily: fonts.regular,
+        fontSize: 16,
+        marginTop: 10,
+    }
 });

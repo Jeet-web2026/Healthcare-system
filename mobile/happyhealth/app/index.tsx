@@ -66,7 +66,7 @@ export default function HomeScreen() {
                     SIGN UP
                 </Text>
             </View>
-            <View style={{ gap: 20 }}>
+            <View style={{ gap: 15 }}>
                 <View>
                     <Text style={[styles.inputLabel,
                     styles.basicText
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
     },
     topSection: {
-        height: 115,
+        height: 150,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
         paddingVertical: 18,
         alignItems: 'center',
         borderRadius: 10,
-        marginTop: 10,
+        marginTop: 7,
     },
     buttonText: {
         fontFamily: fonts.semibold,

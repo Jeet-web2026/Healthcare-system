@@ -6,44 +6,48 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('user_personal_details', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->bigInteger('pin')->nullable();
+            $table->string('country')->nullable();
+            $table->bigInteger('age')->nullable();
+            $table->timestamps();
         });
 
-        Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->longText('payload');
-            $table->integer('last_activity')->index();
+        Schema::create('user_health_details', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->string('disease_name')->nullable();
+            $table->string('disease_start_time')->nullable();
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('user_personal_details');
+        Schema::dropIfExists('user_health_details');
     }
 };

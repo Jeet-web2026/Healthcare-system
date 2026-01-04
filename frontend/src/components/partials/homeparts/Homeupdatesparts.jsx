@@ -14,7 +14,7 @@ const Homeupdatesparts = () => {
       <div className="flex lg:flex-row flex-col lg:items-center justify-between lg:gap-0 gap-6">
         <div className="flex flex-col gap-4 lg:w-2/3">
           <p className="font-medium text-xl">About Our Project</p>
-          <h2 className="text-4xl font-semibold">
+          <h2 className="lg:text-4xl text-3xl font-semibold">
             Health updates you need to know
           </h2>
           <p className="text-base mt-4">

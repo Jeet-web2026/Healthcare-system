@@ -1,11 +1,18 @@
-import React from "react";
+import { useState } from "react";
 import Button from "../Button";
+import Card from "../Card";
 
 const Homeupdatesparts = () => {
+  const [activeTab, setActiveTab] = useState("all");
+  const tabs = [
+    { label: "All", value: "all" },
+    { label: "Projects", value: "projects" },
+    { label: "Latest upgrades", value: "upgrades" },
+  ];
   return (
-    <section className="py-20 bg-blue-900 rounded-xl px-5 text-white">
-      <div className="flex lg:flex-row flex-col items-center justify-between">
-        <div className="flex flex-col gap-4 w-2/3">
+    <section className="lg:py-20 py-10 bg-blue-900 lg:rounded-xl px-5 text-white">
+      <div className="flex lg:flex-row flex-col lg:items-center justify-between lg:gap-0 gap-6">
+        <div className="flex flex-col gap-4 lg:w-2/3">
           <p className="font-medium text-xl">About Our Project</p>
           <h2 className="text-4xl font-semibold">
             Health updates you need to know
@@ -23,16 +30,23 @@ const Homeupdatesparts = () => {
           icon={<i className="ri-arrow-right-long-line"></i>}
         />
       </div>
-      <div className="flex gap-4 items-center mt-4">
-        <button className="cursor-pointer hover:underline transition-all ease-in-out duration-300 hover:text-gray-300">
-          All
-        </button>
-        <button className="cursor-pointer hover:underline transition-all ease-in-out duration-300 hover:text-gray-300">
-          Projects
-        </button>
-        <button className="cursor-pointer hover:underline transition-all ease-in-out duration-300 hover:text-gray-300">
-          Latest upgrades
-        </button>
+      <div className="mt-8 lg:mt-0 border-t border-gray-300 pt-3 lg:pt-0 lg:border-t-0">
+        <div className="flex gap-4 items-center mt-4">
+          {tabs.map((tab, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveTab(tab.value)}
+              className={`cursor-pointer hover:underline transition-all ease-in-out duration-300 hover:text-gray-300 ${
+                activeTab === tab.value ? "underline" : ""
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+        <div>
+          <Card />
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../Button";
-import Card from "../Card";
+import Slick from "../Slick";
 
 const Homeupdatesparts = () => {
   const [activeTab, setActiveTab] = useState("all");
@@ -8,6 +8,36 @@ const Homeupdatesparts = () => {
     { label: "All", value: "all" },
     { label: "Projects", value: "projects" },
     { label: "Latest upgrades", value: "upgrades" },
+  ];
+  const SlickData = [
+    {
+      id: 1,
+      icon: <i className="ri-stethoscope-line"></i>,
+      title: "Radiology",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem deserunt consectetur amet asperiores harum illo dicta voluptatum cumque eveniet soluta consequuntur repellat, maxime nihil fugiat.",
+    },
+    {
+      id: 2,
+      icon: <i className="ri-stethoscope-line"></i>,
+      title: "Radiology",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem deserunt consectetur amet asperiores harum illo dicta voluptatum cumque eveniet soluta consequuntur repellat, maxime nihil fugiat.",
+    },
+    {
+      id: 3,
+      icon: <i className="ri-stethoscope-line"></i>,
+      title: "Radiology",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem deserunt consectetur amet asperiores harum illo dicta voluptatum cumque eveniet soluta consequuntur repellat, maxime nihil fugiat.",
+    },
+    {
+      id: 4,
+      icon: <i className="ri-stethoscope-line"></i>,
+      title: "Radiology",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem deserunt consectetur amet asperiores harum illo dicta voluptatum cumque eveniet soluta consequuntur repellat, maxime nihil fugiat.",
+    },
   ];
   return (
     <section className="lg:py-20 py-10 bg-blue-900 lg:rounded-xl px-5 text-white">
@@ -45,7 +75,15 @@ const Homeupdatesparts = () => {
           ))}
         </div>
         <div>
-          <Card />
+          <Slick
+            baseclass="mt-8"
+            dots={false}
+            scroll={1}
+            show={3}
+            cardclass={`bg-blue-100 p-5 rounded-lg shadow-sm border border-blue-700 text-blue-900 flex flex-col gap-5`}
+            carddata={SlickData}
+            autoplay={true}
+          />
         </div>
       </div>
     </section>

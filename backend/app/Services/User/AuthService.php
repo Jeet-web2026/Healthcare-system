@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use App\Enums\GlobalMessages;
 use App\Events\UserRegistered;
+use App\Http\Resources\Registration\LoginResponseResource;
 use App\Http\Resources\Registration\RegistrationResponseResource;
 use App\Repository\Interface\AuthenticationServiceInterface;
 use App\Repository\Interface\UserManagementRepositoryInterface;
@@ -82,7 +83,7 @@ class AuthService implements AuthenticationServiceInterface
 
                 $user = $user->fresh();
 
-                $authToken = JWTAuth::fromUser($user);
+                $authToken = $this->generateAuthToken($user);
 
                 return $this->successResponse(
                     true,
@@ -101,5 +102,43 @@ class AuthService implements AuthenticationServiceInterface
             Log::error('Email verification error ', [$th->getMessage()]);
             return $this->errorResponse(false, GlobalMessages::SOMETHING_WENT_WRONG->value, null);
         }
+    }
+
+    //------------------------------------
+    // Login
+    // ------------------------------------
+
+    public function login(string $email, string $password): JsonResponse
+    {
+        try {
+            $credentials = ['email' => $email, 'password' => $password];
+
+            if (!$token = JWTAuth::attempt($credentials)) {
+                return $this->errorResponse(false, GlobalMessages::INVALID_CREDENTIALS->value, null, Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
+
+            $user = $this->userManagementRepository->findByEmail($email);
+            $this->userManagementRepository->update($user->id, ['last_login' => now()]);
+            $user = $user->fresh();
+            
+            return $this->successResponse(
+                true,
+                GlobalMessages::LOGINSUCCESS->value,
+                ['token_type' => 'bearer', 'auth_token' => $token, 'user' => new LoginResponseResource($user)],
+                Response::HTTP_OK
+            );
+        } catch (Exception $th) {
+            Log::error('Login error ', [$th->getMessage()]);
+            return $this->errorResponse(false, GlobalMessages::SOMETHING_WENT_WRONG->value, null);
+        }
+    }
+
+    //------------------------------------
+    // Token generation
+    // ------------------------------------
+
+    private function generateAuthToken($user): string
+    {
+        return JWTAuth::fromUser($user);
     }
 }

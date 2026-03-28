@@ -10,6 +10,8 @@ enum GlobalMessages: string
     case FIELDS_REQUIRED = 'Fields are required!';
     case NOT_FOUND = 'Not found!';
     case EMAILVERIFICATIONFAILED = 'Email verification failed!';
+    case LOGINSUCCESS = 'Login successful!';
+    case INVALID_CREDENTIALS = 'Invalid credentials!';
 
     public function withResource(string $resource): string
     {

@@ -7,6 +7,7 @@ use App\Http\Requests\Api\Auth\EmailVerificationrequest;
 use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Requests\Api\Auth\RegisterRequest;
 use App\Repository\Interface\AuthenticationServiceInterface;
+use Illuminate\Http\Request;
 
 class AuthmanagementController extends Controller
 {
@@ -25,5 +26,10 @@ class AuthmanagementController extends Controller
     public function login(LoginRequest $request)
     {
         return $this->authService->login($request->email, $request->password);
+    }
+
+    public function logout(Request $request)
+    {
+        return $this->authService->logout($request);
     }
 }

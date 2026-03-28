@@ -120,7 +120,7 @@ class AuthService implements AuthenticationServiceInterface
             $user = $this->userManagementRepository->findByEmail($email);
             $this->userManagementRepository->update($user->id, ['last_login' => now()]);
             $user = $user->fresh();
-            
+
             return $this->successResponse(
                 true,
                 GlobalMessages::LOGINSUCCESS->value,
@@ -140,5 +140,21 @@ class AuthService implements AuthenticationServiceInterface
     private function generateAuthToken($user): string
     {
         return JWTAuth::fromUser($user);
+    }
+
+    //------------------------------------
+    // Logout
+    // ------------------------------------
+
+    public function logout($request): JsonResponse
+    {
+        try {
+            JWTAuth::invalidate(JWTAuth::getToken());
+
+            return $this->successResponse(true, 'Logout successful!', null, Response::HTTP_OK);
+        } catch (Exception $th) {
+            Log::error('Logout error ', [$th->getMessage()]);
+            return $this->errorResponse(false, GlobalMessages::SOMETHING_WENT_WRONG->value, null);
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use App\Enums\GlobalMessages;
 use App\Events\UserRegistered;
+use App\Http\Resources\Registration\RegistrationResponseResource;
 use App\Repository\Interface\AuthenticationServiceInterface;
 use App\Repository\Interface\UserManagementRepositoryInterface;
 use App\Traits\ResponseTrait;
@@ -11,6 +12,7 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthService implements AuthenticationServiceInterface
 {
@@ -32,7 +34,7 @@ class AuthService implements AuthenticationServiceInterface
                 $this->sentEmail($userData['email'], (int)$otp);
             }
 
-            return $this->successResponse(true, GlobalMessages::CREATED->withResource('User'), $newUser, Response::HTTP_CREATED);
+            return $this->successResponse(true, GlobalMessages::CREATED->withResource('User'), new RegistrationResponseResource($newUser), Response::HTTP_CREATED);
         } catch (Exception $th) {
             Log::error('Registration error ', [$th->getMessage()]);
             return $this->errorResponse(false, GlobalMessages::SOMETHING_WENT_WRONG->value, null);
@@ -65,17 +67,36 @@ class AuthService implements AuthenticationServiceInterface
     public function emailVerification(string $email, int $otp): JsonResponse
     {
         try {
-            if ($email && $otp) {
-                $user = $this->userManagementRepository->findByEmail($email);
+            $user = $this->userManagementRepository->findByEmail($email);
 
-                if (!$user) {
-                    return $this->errorResponse(false, GlobalMessages::NOT_FOUND->withResource('User'), null, Response::HTTP_NOT_FOUND);
-                }
-
-
-                return $this->successResponse(true, GlobalMessages::EMAILVERIFICATIONCOMPLETED->value, null);
+            if (!$user) {
+                return $this->errorResponse(false, GlobalMessages::NOT_FOUND->withResource('User'), null, Response::HTTP_NOT_FOUND);
             }
-            return $this->errorResponse(false, GlobalMessages::EMAILVERIFICATIONCOMPLETED->withResource('Email and OTP'), null, Response::HTTP_UNPROCESSABLE_ENTITY);
+
+            if ((int)$user->otp === (int)$otp) {
+                $this->userManagementRepository->update($user->id, [
+                    'email_verified_at' => now(),
+                    'is_active' => true,
+                    'otp' => null
+                ]);
+
+                $user = $user->fresh();
+
+                $authToken = JWTAuth::fromUser($user);
+
+                return $this->successResponse(
+                    true,
+                    GlobalMessages::EMAILVERIFICATIONCOMPLETED->value,
+                    ['token_type' => 'bearer', 'auth_token' => $authToken, 'user' => new RegistrationResponseResource($user)],
+                    Response::HTTP_OK
+                );
+            }
+
+            return $this->errorResponse(
+                false,
+                GlobalMessages::EMAILVERIFICATIONFAILED->value,
+                null
+            );
         } catch (Exception $th) {
             Log::error('Email verification error ', [$th->getMessage()]);
             return $this->errorResponse(false, GlobalMessages::SOMETHING_WENT_WRONG->value, null);

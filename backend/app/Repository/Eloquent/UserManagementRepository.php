@@ -14,8 +14,10 @@ class UserManagementRepository implements UserManagementRepositoryInterface
 
     public function update(int $id, array $request): User
     {
-        $updatedUser = User::where('id', $id)->update($request);
-        return $updatedUser;
+        $user = User::findOrFail($id);
+        $user->update($request);
+
+        return $user;
     }
 
     public function findById(int $id): User

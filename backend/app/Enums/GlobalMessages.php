@@ -9,6 +9,7 @@ enum GlobalMessages: string
     case EMAILVERIFICATIONCOMPLETED = 'Email verified successfully!';
     case FIELDS_REQUIRED = 'Fields are required!';
     case NOT_FOUND = 'Not found!';
+    case EMAILVERIFICATIONFAILED = 'Email verification failed!';
 
     public function withResource(string $resource): string
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Auth\EmailVerificationrequest;
 use App\Http\Requests\Api\Auth\RegisterRequest;
 use App\Repository\Interface\AuthenticationServiceInterface;
 
@@ -15,8 +16,8 @@ class AuthmanagementController extends Controller
         return $this->authService->registerUser($request->validated());
     }
 
-    public function emailVerification()
+    public function emailVerification(EmailVerificationrequest $request)
     {
-        
+        return $this->authService->emailVerification($request->email, $request->otp);
     }
 }

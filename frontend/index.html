@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,6 +9,27 @@
       type="image/x-icon"
     />
     <title>Happy Health | One Stop Medical Management System</title>
+    <meta
+      name="description"
+      content="Consult certified doctors online. Book appointments, get prescriptions, and manage your health securely."
+    />
+
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Online Doctor Consultation" />
+    <meta
+      property="og:description"
+      content="Talk to verified doctors anytime."
+    />
+    <meta
+      property="og:image"
+      content="https://healthcare-system-five.vercel.app/src/assets/images/base-logo.png"
+    />
+    <meta
+      property="og:url"
+      content="https://healthcare-system-five.vercel.app/"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://healthcare-system-five.vercel.app/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,5 +48,19 @@
   <body>
     <div id="main" class="container mx-auto"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalOrganization",
+        "name": "HealthCare App",
+        "url": "https://healthcare-system-five.vercel.app/",
+        "logo": "https://healthcare-system-five.vercel.app/src/assets/images/base-logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-XXXXXXXXXX",
+          "contactType": "customer support"
+        }
+      }
+    </script>
   </body>
 </html>

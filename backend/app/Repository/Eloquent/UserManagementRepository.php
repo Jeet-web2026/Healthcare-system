@@ -27,4 +27,9 @@ class UserManagementRepository implements UserManagementRepositoryInterface
     {
         return User::where('id', $id)->delete();
     }
+
+    public function findByEmail(string $email): User
+    {
+        return User::where('email', $email)->first();
+    }
 }

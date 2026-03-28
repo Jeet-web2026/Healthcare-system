@@ -14,4 +14,9 @@ class AuthmanagementController extends Controller
     {
         return $this->authService->registerUser($request->validated());
     }
+
+    public function emailVerification()
+    {
+        
+    }
 }

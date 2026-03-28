@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -13,13 +12,7 @@ class VerifyEmailOtpMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(public int $otp) {}
 
     /**
      * Get the message envelope.
@@ -37,7 +30,7 @@ class VerifyEmailOtpMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'auth.otpVerificationMail',
+            view: 'auth.otpVerificationMail'
         );
     }
 

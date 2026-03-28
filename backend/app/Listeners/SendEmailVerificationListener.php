@@ -12,6 +12,6 @@ class SendEmailVerificationListener
         SendEmailVerificationJob::dispatch(
             $event->email,
             $event->otp
-        )->onQueue('emails');
+        );
     }
 }

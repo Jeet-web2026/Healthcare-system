@@ -14,14 +14,24 @@ class SendEmailVerificationJob implements ShouldQueue
 {
     use Queueable, Dispatchable, InteractsWithQueue, SerializesModels;
 
+    public int $tries = 3;
     public function __construct(
         public string $email,
         public int $otp
     ) {}
 
+    public function backoff(): int
+    {
+        return 10;
+    }
+
     public function handle(): void
     {
-        Mail::to($this->email)
-            ->send(new VerifyEmailOtpMail($this->otp));
+        try {
+            Mail::to($this->email)
+                ->send(new VerifyEmailOtpMail($this->otp));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

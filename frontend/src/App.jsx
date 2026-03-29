@@ -5,6 +5,7 @@ import GetStarted from "./pages/GetStarted";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
 import Login from "./pages/Login";
 import usePageTitle from "./hooks/PageTitle";
+import Register from "./pages/Register";
 
 function App() {
   usePageTitle();
@@ -18,6 +19,7 @@ function App() {
           </ProtectedRoutes>
           } />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
       </Routes>
     </>
   );

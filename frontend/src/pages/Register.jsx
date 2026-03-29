@@ -1,17 +1,32 @@
 import GuestLayout from "../components/layouts/GuestLayout";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
   return (
     <GuestLayout redirectLink="/">
-      <section className="lg:w-1/2 w-full mx-5 lg:mx-0 bg-blue-50 shadow-md rounded-lg p-8 flex flex-col gap-10">
+      <section className="lg:w-1/2 w-full mx-5 lg:mx-0 bg-blue-50 shadow-md rounded-lg p-8 flex flex-col gap-7">
         <h2 className="text-blue-900 font-bold lg:text-3xl text-2xl">
           <span className="me-2.5 border rounded-full px-1.5 py-1 lg:text-2xl border-blue-300">
-            <i className="ri-lock-2-line text-blue-500"></i>
+            <i className="ri-open-arm-line text-blue-500"></i>
           </span>
-          Welcome Back
+          Create an Account
         </h2>
         <form method="post" className="flex flex-col gap-5">
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-blue-900 font-medium mb-2"
+            >
+              Full name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="border border-blue-300 w-full rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="e.g. John Doe"
+            />
+          </div>
           <div>
             <label
               htmlFor="email"
@@ -24,7 +39,7 @@ const Login = () => {
               id="email"
               name="email"
               className="border border-blue-300 w-full rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your email"
+              placeholder="e.g. john.doe@example.com"
             />
           </div>
           <div>
@@ -46,12 +61,12 @@ const Login = () => {
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 text-white text-lg w-full font-semibold py-2 px-4 rounded-md transition duration-300"
           >
-            Login
+            Get started
           </button>
           <p className="text-center">
-            Don't have any account?{" "}
-            <Link to="/register" className="text-blue-500">
-              Sign up
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-500">
+              Log in
             </Link>
           </p>
         </form>
@@ -60,4 +75,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

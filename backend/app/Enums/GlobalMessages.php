@@ -5,7 +5,7 @@ namespace App\Enums;
 enum GlobalMessages: string
 {
     case SOMETHING_WENT_WRONG = 'Something went wrong!';
-    case CREATED = 'Created successfully!';
+    case CREATED = 'registered successfully!, Please verify your email to complete the registration process.';
     case EMAILVERIFICATIONCOMPLETED = 'Email verified successfully!';
     case FIELDS_REQUIRED = 'Fields are required!';
     case NOT_FOUND = 'Not found!';

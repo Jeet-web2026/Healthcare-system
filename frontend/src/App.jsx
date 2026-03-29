@@ -6,6 +6,7 @@ import ProtectedRoutes from "./routes/ProtectedRoutes";
 import Login from "./pages/Login";
 import usePageTitle from "./hooks/PageTitle";
 import Register from "./pages/Register";
+import EmailVerification from "./pages/EmailVerification";
 
 function App() {
   usePageTitle();
@@ -20,6 +21,7 @@ function App() {
           } />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/email-verification" element={<EmailVerification />} />
       </Routes>
     </>
   );

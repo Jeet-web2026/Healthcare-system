@@ -1,9 +1,9 @@
 import Navigationsection from "../Navigationsection";
 import Footer from "../partials/Footer";
 
-const Baselayouts = ({ children }) => {
+const Baselayouts = ({ children, baseClass }) => {
   return (
-    <div className="lg:pt-48 pt-32">
+    <div className={`lg:pt-48 pt-32 ${baseClass}`}>
       <Navigationsection />
       {children}
       <Footer />

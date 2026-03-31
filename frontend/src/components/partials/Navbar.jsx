@@ -48,12 +48,39 @@ const Navbar = () => {
               <summary className="text-base uppercase text-white font-semibold">
                 Pages
               </summary>
-              <ul className="p-2  w-40 z-1">
+              <ul className="p-2  w-60 z-1 mt-7">
                 <li>
-                  <a>Submenu 1</a>
+                  <Link
+                    to={"/about-us"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-info-i"></i>
+                    </span>
+                    About Us
+                  </Link>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <Link
+                    to={"/services"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-service-line"></i>
+                    </span>
+                    Our Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/branches"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-home-smile-2-line"></i>
+                    </span>
+                    Our branches
+                  </Link>
                 </li>
               </ul>
             </details>
@@ -63,12 +90,61 @@ const Navbar = () => {
               <summary className="text-base uppercase text-white font-semibold">
                 Services
               </summary>
-              <ul className="p-2  w-40 z-1">
+              <ul className="p-2  w-70 z-1 mt-7">
                 <li>
-                  <a>Submenu 1</a>
+                  <Link
+                    to={"/services/health-checkup"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-stethoscope-line"></i>
+                    </span>
+                    Health Checkup
+                  </Link>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <Link
+                    to={"/services/diagnostic-services"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-dossier-line"></i>
+                    </span>
+                    Diagnostic Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/services/pharmacy-medication"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-surgical-mask-line"></i>
+                    </span>
+                    Pharmacy & Medication
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/services/pharmacy-medication"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-aed-line"></i>
+                    </span>
+                    Emergency & Support
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/services/pharmacy-medication"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-empathize-line"></i>
+                    </span>
+                    Wellness & Preventive Care
+                  </Link>
                 </li>
               </ul>
             </details>

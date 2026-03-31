@@ -1,5 +1,13 @@
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
+  const [isOpen, SetOpen] = useState(false);
+  useEffect(() => {
+    const handleClickOutside = () => setOpenMenu(null);
+    document.addEventListener("click", handleClickOutside);
+
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
   return (
     <nav className="navbar bg-blue-900 lg:rounded-xl lg:p-5 p-4">
       <div className="navbar-start">
@@ -154,12 +162,61 @@ const Navbar = () => {
               <summary className="text-base uppercase text-white font-semibold">
                 Case Studies
               </summary>
-              <ul className="p-2  w-40 z-1">
+              <ul className="p-2  w-70 z-1 mt-7">
                 <li>
-                  <a>Submenu 1</a>
+                  <Link
+                    to={"/case-studies/patient-care-improvements"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-sparkling-line"></i>
+                    </span>
+                    Patient Care Improvements
+                  </Link>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <Link
+                    to={"/services/diagnostic-services"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-dv-line"></i>
+                    </span>
+                    Digital Healthcare Solutions
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/services/diagnostic-services"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-hospital-line"></i>
+                    </span>
+                    Hospital Management
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/services/diagnostic-services"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-ai-generate-2"></i>
+                    </span>
+                    AI & Innovation
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/services/diagnostic-services"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-bar-chart-grouped-line"></i>
+                    </span>
+                    Success Stories
+                  </Link>
                 </li>
               </ul>
             </details>
@@ -169,12 +226,28 @@ const Navbar = () => {
               <summary className="text-base uppercase text-white font-semibold">
                 Blogs
               </summary>
-              <ul className="p-2  w-40 z-1">
+              <ul className="p-2 mt-7 w-70 z-1">
                 <li>
-                  <a>Submenu 1</a>
+                  <Link
+                    to={"/services/health-checkup"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-news-line"></i>
+                    </span>
+                    Latest Blogs
+                  </Link>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <Link
+                    to={"/services/health-checkup"}
+                    className="text-base font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
+                      <i className="ri-calendar-event-line"></i>
+                    </span>
+                    Upcoming Events
+                  </Link>
                 </li>
               </ul>
             </details>

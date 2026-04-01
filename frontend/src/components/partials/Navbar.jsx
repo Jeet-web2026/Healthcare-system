@@ -9,10 +9,14 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-50 p-2 shadow mt-6"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-70 p-2 shadow mt-6"
           >
             <li>
-              <a>Item 1</a>
+              <Link className="font-medium text-blue-900"
+                to={"/"}
+              >
+                Home
+              </Link>
             </li>
             <li>
               <p className="text-blue-900">Pages</p>
@@ -53,7 +57,64 @@ const Navbar = () => {
               </ul>
             </li>
             <li>
-              <a>Item 3</a>
+              <p>Services</p>
+              <ul className="p-2">
+                <li>
+                  <Link
+                    to={"/health-checkup"}
+                    className="font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 fone-normal">
+                      <i className="ri-stethoscope-line"></i>
+                    </span>
+                    Health Checkup
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/diagnostic-services"}
+                    className="font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 fone-normal">
+                      <i className="ri-dossier-line"></i>
+                    </span>
+                    Diagnostic Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/pharmacy-medication"}
+                    className="font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 fone-normal">
+                      <i className="ri-surgical-mask-line"></i>
+                    </span>
+                    Pharmacy & Medication
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/energency-support"}
+                    className="font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 fone-normal">
+                      <i className="ri-aed-line"></i>
+                    </span>
+                    Emergency & Support
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/wellness-preventive-care"}
+                    className="font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 fone-normal">
+                      <i className="ri-empathize-line"></i>
+                    </span>
+                    Wellness & Preventive Care
+                  </Link>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -125,7 +186,7 @@ const Navbar = () => {
               <ul className="p-2  w-70 z-1 mt-7">
                 <li>
                   <Link
-                    to={"/services/health-checkup"}
+                    to={"/health-checkup"}
                     className="text-base font-medium text-blue-900"
                   >
                     <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
@@ -136,7 +197,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    to={"/services/diagnostic-services"}
+                    to={"/diagnostic-services"}
                     className="text-base font-medium text-blue-900"
                   >
                     <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
@@ -147,7 +208,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    to={"/services/pharmacy-medication"}
+                    to={"/pharmacy-medication"}
                     className="text-base font-medium text-blue-900"
                   >
                     <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
@@ -158,7 +219,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    to={"/services/pharmacy-medication"}
+                    to={"/energency-support"}
                     className="text-base font-medium text-blue-900"
                   >
                     <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">
@@ -169,7 +230,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    to={"/services/pharmacy-medication"}
+                    to={"/wellness-preventive-care"}
                     className="text-base font-medium text-blue-900"
                   >
                     <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 text-sm fone-normal">

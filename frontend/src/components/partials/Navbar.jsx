@@ -49,7 +49,12 @@ const Navbar = () => {
       <div className="navbar-center lg:flex gap-2">
         <ul className="menu menu-horizontal hidden lg:flex px-1">
           <li>
-            <a className="text-base uppercase text-white font-semibold">Home</a>
+            <Link
+              className="text-base uppercase text-white font-semibold"
+              to={"/"}
+            >
+              Home
+            </Link>
           </li>
           <li>
             <details>

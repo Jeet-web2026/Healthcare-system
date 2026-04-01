@@ -39,6 +39,7 @@ const Homemainparts = () => {
           />
           <Button
             text="Appointment"
+            link="/make-appointment"
             icon={<i className="ri-calendar-schedule-line"></i>}
           />
         </div>

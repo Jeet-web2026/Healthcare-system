@@ -1,13 +1,5 @@
-import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
-  const [isOpen, SetOpen] = useState(false);
-  useEffect(() => {
-    const handleClickOutside = () => setOpenMenu(null);
-    document.addEventListener("click", handleClickOutside);
-
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
   return (
     <nav className="navbar bg-blue-900 lg:rounded-xl lg:p-5 p-4">
       <div className="navbar-start">
@@ -17,19 +9,46 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-50 p-2 shadow mt-6"
           >
             <li>
               <a>Item 1</a>
             </li>
             <li>
-              <a>Parent</a>
+              <p className="text-blue-900">Pages</p>
               <ul className="p-2">
                 <li>
-                  <a>Submenu 1</a>
+                  <Link
+                    to={"/about-us"}
+                    className="font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 fone-normal">
+                      <i className="ri-info-i"></i>
+                    </span>
+                    About Us
+                  </Link>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <Link
+                    to={"/services"}
+                    className="font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 fone-normal">
+                      <i className="ri-service-line"></i>
+                    </span>
+                    Our Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/branches"}
+                    className="font-medium text-blue-900"
+                  >
+                    <span className="border rounded border-blue-500 bg-blue-50 px-1 text-blue-500 fone-normal">
+                      <i className="ri-home-smile-2-line"></i>
+                    </span>
+                    Our branches
+                  </Link>
                 </li>
               </ul>
             </li>

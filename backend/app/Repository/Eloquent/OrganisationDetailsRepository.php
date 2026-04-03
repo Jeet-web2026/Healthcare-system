@@ -2,13 +2,13 @@
 
 namespace App\Repository\Eloquent;
 
-class OrganisationDetailsRepository
+use App\Models\OrgDetails;
+use App\Repository\Interface\OrganisationDetailsRepositoryInterface;
+
+class OrganisationDetailsRepository implements OrganisationDetailsRepositoryInterface
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
+    public function getOrganisationDetails(): OrgDetails
     {
-        //
+        return OrgDetails::first();
     }
 }

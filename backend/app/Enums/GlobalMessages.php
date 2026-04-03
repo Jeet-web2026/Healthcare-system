@@ -12,6 +12,7 @@ enum GlobalMessages: string
     case EMAILVERIFICATIONFAILED = 'Email verification failed!';
     case LOGINSUCCESS = 'Login successful!';
     case INVALID_CREDENTIALS = 'Invalid credentials!';
+    case DATA_FETCHED = 'Data fetched successfully!';
 
     public function withResource(string $resource): string
     {

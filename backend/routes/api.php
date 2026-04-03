@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthmanagementController;
+use App\Http\Controllers\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -16,9 +17,7 @@ Route::prefix('v1')->group(function () {
         });
     });
 
-    Route::prefix('home')->controller(AuthmanagementController::class)->group(function () {
-        Route::middleware('auth:api')->group(function () {
-            Route::get('/home', 'home');
-        });
+    Route::prefix('home')->controller(HomeController::class)->group(function () {
+        Route::get('/', 'index');
     });
 });

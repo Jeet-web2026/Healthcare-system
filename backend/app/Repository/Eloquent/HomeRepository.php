@@ -2,13 +2,13 @@
 
 namespace App\Repository\Eloquent;
 
-class HomeRepository
+use App\Models\Banner;
+use App\Repository\Interface\HomeServiceRepositoryInterface;
+
+class HomeRepository implements HomeServiceRepositoryInterface
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
+    public function bannerData(): Banner
     {
-        //
+        return Banner::first();
     }
 }

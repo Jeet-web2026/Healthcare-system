@@ -10,6 +10,7 @@ use App\Repository\Eloquent\WhoweareRepository;
 use App\Repository\Interface\AboutusRepositoryInterface;
 use App\Repository\Interface\AboutusServiceInterface;
 use App\Repository\Interface\AuthenticationServiceInterface;
+use App\Repository\Interface\CacheServiceInterface;
 use App\Repository\Interface\HomeServiceInterface;
 use App\Repository\Interface\HomeServiceRepositoryInterface;
 use App\Repository\Interface\OrganisationDetailsManagementServiceInterface;
@@ -17,6 +18,7 @@ use App\Repository\Interface\OrganisationDetailsRepositoryInterface;
 use App\Repository\Interface\UserManagementRepositoryInterface;
 use App\Repository\Interface\WhoweareRepositoryInterface;
 use App\Repository\Interface\WhoweareServiceInterface;
+use App\Services\CacheService;
 use App\Services\Pages\AboutusService;
 use App\Services\Pages\HomeService;
 use App\Services\Pages\OrganisationDetailsManagementService;
@@ -34,6 +36,11 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        $this->app->bind(
+            CacheServiceInterface::class,
+            CacheService::class
+        );
+
         $this->app->bind(
             UserManagementRepositoryInterface::class,
             UserManagementRepository::class

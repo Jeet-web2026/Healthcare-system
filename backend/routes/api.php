@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthmanagementController;
-use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Pages\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {

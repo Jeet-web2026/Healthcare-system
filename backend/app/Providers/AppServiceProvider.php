@@ -8,7 +8,7 @@ use App\Repository\Interface\AuthenticationServiceInterface;
 use App\Repository\Interface\HomeServiceInterface;
 use App\Repository\Interface\HomeServiceRepositoryInterface;
 use App\Repository\Interface\UserManagementRepositoryInterface;
-use App\Services\Home\HomeService;
+use App\Services\Pages\HomeService;
 use App\Services\User\AuthService;
 use Illuminate\Support\ServiceProvider;
 

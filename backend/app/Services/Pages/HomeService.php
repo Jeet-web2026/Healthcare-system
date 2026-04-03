@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Home;
+namespace App\Services\Pages;
 
 use App\Repository\Interface\HomeServiceInterface;
 

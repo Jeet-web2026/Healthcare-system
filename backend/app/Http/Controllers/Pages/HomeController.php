@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Pages;
 
 use App\Enums\GlobalMessages;
 use App\Http\Controllers\Controller;

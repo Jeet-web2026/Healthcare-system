@@ -13,6 +13,8 @@ enum GlobalMessages: string
     case LOGINSUCCESS = 'Login successful!';
     case INVALID_CREDENTIALS = 'Invalid credentials!';
     case DATA_FETCHED = 'Data fetched successfully!';
+    case DATA_CREATED = 'Data created successfully!';
+    case DATA_UPDATED = 'Data updated successfully!';
 
     public function withResource(string $resource): string
     {
@@ -20,6 +22,8 @@ enum GlobalMessages: string
             self::CREATED => "{$resource} {$this->value}",
             self::FIELDS_REQUIRED => "{$resource} {$this->value}",
             self::NOT_FOUND => "{$resource} {$this->value}",
+            self::DATA_CREATED => "{$resource} {$this->value}",
+            self::DATA_UPDATED => "{$resource} {$this->value}",
         };
     }
 }

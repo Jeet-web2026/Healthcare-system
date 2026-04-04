@@ -21,11 +21,27 @@ class HomeService implements HomeServiceInterface
             GlobalCachingEnum::HOME_BANNER->value,
             function () {
                 $bannerData = $this->homeRepository->bannerData();
-                $merged_data = array_merge(
-                    $bannerData->toArray()
-                );
-                return new HomepageresponseResource((object) $merged_data);
+
+                return new HomepageresponseResource($bannerData);
             }
         );
+    }
+
+    public function createHomePageData(array $data)
+    {
+        $result = $this->homeRepository->createHomePageData($data);
+
+        $this->cacheService->forget(GlobalCachingEnum::HOME_BANNER->value);
+
+        return $result;
+    }
+
+    public function updateHomePageData(int $id, array $data)
+    {
+        $result = $this->homeRepository->updateHomePageData($id, $data);
+
+        $this->cacheService->forget(GlobalCachingEnum::HOME_BANNER->value);
+
+        return $result;
     }
 }

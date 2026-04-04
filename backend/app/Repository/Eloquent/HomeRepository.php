@@ -11,4 +11,16 @@ class HomeRepository implements HomeServiceRepositoryInterface
     {
         return Banner::first();
     }
+
+    public function createHomePageData(array $data): Banner
+    {
+        return Banner::create($data);
+    }
+
+    public function updateHomePageData(int $id, array $data): Banner
+    {
+        $banner = Banner::findOrFail($id);
+        $banner->update($data);
+        return $banner;
+    }
 }

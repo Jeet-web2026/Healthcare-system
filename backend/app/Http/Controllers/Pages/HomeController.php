@@ -21,6 +21,18 @@ class HomeController extends Controller
         return $this->successResponse(true, GlobalMessages::DATA_FETCHED->value, $homePageData);
     }
 
+    public function createHomePageData(): JsonResponse
+    {
+        $homePageData = $this->homeService->createHomePageData(request()->all());
+        return $this->successResponse(true, GlobalMessages::DATA_CREATED->withResource('Home page'), $homePageData);
+    }
+
+    public function updateHomePageData(int $id): JsonResponse
+    {
+        $homePageData = $this->homeService->updateHomePageData($id, request()->all());
+        return $this->successResponse(true, GlobalMessages::DATA_UPDATED->withResource('Home page'), $homePageData);
+    }
+
     public function orgDetails(): JsonResponse
     {
         $organisationDetails = $this->organisationDetails->oganisationDetails();

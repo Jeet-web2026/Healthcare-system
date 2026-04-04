@@ -7,6 +7,9 @@ use App\Http\Resources\HomepageresponseResource;
 use App\Repository\Interface\CacheServiceInterface;
 use App\Repository\Interface\HomeServiceInterface;
 use App\Repository\Interface\HomeServiceRepositoryInterface;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class HomeService implements HomeServiceInterface
 {
@@ -29,19 +32,57 @@ class HomeService implements HomeServiceInterface
 
     public function createHomePageData(array $data)
     {
-        $result = $this->homeRepository->createHomePageData($data);
+        $path = $this->homeRepository->uploadImage($data['image']);
+        $data['image_url'] = $path;
 
-        $this->cacheService->forget(GlobalCachingEnum::HOME_BANNER->value);
+        try {
+            $result = DB::transaction(function () use ($data) {
+                return $this->homeRepository->createHomePageData($data);
+            });
 
-        return $result;
+            $this->cacheService->forget(GlobalCachingEnum::HOME_BANNER->value);
+
+            return $result;
+        } catch (Exception $e) {
+            $this->homeRepository->deleteImage($path);
+            throw $e;
+        }
     }
 
     public function updateHomePageData(int $id, array $data)
     {
-        $result = $this->homeRepository->updateHomePageData($id, $data);
+        $existingData = $this->homeRepository->fetchHomePageDataById($id);
 
-        $this->cacheService->forget(GlobalCachingEnum::HOME_BANNER->value);
+        if (!$existingData) {
+            throw new NotFoundResourceException('Home page data not found.');
+        }
 
-        return $result;
+        $oldImage = $existingData->image_url ?? null;
+        $newImagePath = null;
+
+        try {
+            if (isset($data['image'])) {
+                $newImagePath = $this->homeRepository->uploadImage($data['image']);
+                $data['image_url'] = $newImagePath;
+            }
+
+            $result = DB::transaction(function () use ($id, $data) {
+                return $this->homeRepository->updateHomePageData($id, $data);
+            });
+
+            if ($newImagePath && $oldImage) {
+                $this->homeRepository->deleteImage($oldImage);
+            }
+
+            $this->cacheService->forget(GlobalCachingEnum::HOME_BANNER->value);
+
+            return $result;
+        } catch (Exception $e) {
+            if ($newImagePath) {
+                $this->homeRepository->deleteImage($newImagePath);
+            }
+
+            throw $e;
+        }
     }
 }

@@ -21,7 +21,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/', 'index');
         Route::middleware(['auth:api', 'role:admin'])->group(function () {
             Route::post('/create', 'createHomePageData');
-            Route::put('/update/{id}', 'updateHomePageData');
+            Route::post('/update/{id}', 'updateHomePageData');
         });
 
         Route::get('/organisation-details', 'orgDetails');

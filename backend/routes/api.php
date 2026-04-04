@@ -25,5 +25,9 @@ Route::prefix('v1')->group(function () {
         });
 
         Route::get('/organisation-details', 'orgDetails');
+        Route::prefix('organisation-details')->middleware(['auth:api', 'role:admin'])->group(function () {
+            Route::post('/create', 'createOrganizationDetailsData');
+            Route::post('/update/{id}', 'updateOrganizationDetailsData');
+        });
     });
 });

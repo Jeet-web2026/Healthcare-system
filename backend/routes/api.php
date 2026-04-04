@@ -19,8 +19,10 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('home')->controller(HomeController::class)->group(function () {
         Route::get('/', 'index');
-        Route::post('/create', 'createHomePageData');
-        Route::put('/update/{id}', 'updateHomePageData');
+        Route::middleware(['auth:api', 'role:admin'])->group(function () {
+            Route::post('/create', 'createHomePageData');
+            Route::put('/update/{id}', 'updateHomePageData');
+        });
 
         Route::get('/organisation-details', 'orgDetails');
     });

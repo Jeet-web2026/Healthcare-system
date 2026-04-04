@@ -15,6 +15,8 @@ enum GlobalMessages: string
     case DATA_FETCHED = 'Data fetched successfully!';
     case DATA_CREATED = 'Data created successfully!';
     case DATA_UPDATED = 'Data updated successfully!';
+    case AUTHENTICATION_REQUIRED = 'Login required to access this resource!';
+    case UNAUTHORIZED = 'You do not have permission to access this resource!';
 
     public function withResource(string $resource): string
     {

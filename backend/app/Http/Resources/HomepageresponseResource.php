@@ -15,12 +15,6 @@ class HomepageresponseResource extends JsonResource
                 'subheading' => $this->subheading,
                 'description' => $this->description,
                 'image_url' => $this->image_url
-            ],
-            'organisation_details' => [
-                'name' => $this->name,
-                'address' => $this->address,
-                'contact_email' => $this->contact_email,
-                'contact_phone' => $this->contact_phone
             ]
         ];
     }

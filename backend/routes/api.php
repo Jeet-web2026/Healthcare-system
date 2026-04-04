@@ -19,5 +19,6 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('home')->controller(HomeController::class)->group(function () {
         Route::get('/', 'index');
+        Route::get('/organisation-details', 'orgDetails');
     });
 });

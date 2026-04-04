@@ -11,7 +11,7 @@ class OrganisationDetailsManagementService implements OrganisationDetailsManagem
 {
     public function __construct(protected OrganisationDetailsRepositoryInterface $organisationRepository, protected CacheServiceInterface $cacheService) {}
 
-    public function organizationdetails()
+    public function oganisationDetails()
     {
         return $this->cacheService->remember(
             GlobalCachingEnum::ORG_DETAILS->value,

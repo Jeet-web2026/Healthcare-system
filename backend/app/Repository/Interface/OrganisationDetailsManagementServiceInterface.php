@@ -5,5 +5,5 @@ namespace App\Repository\Interface;
 
 interface OrganisationDetailsManagementServiceInterface
 {
-    public function organizationdetails();
+    public function oganisationDetails();
 }

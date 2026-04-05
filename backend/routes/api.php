@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthmanagementController;
+use App\Http\Controllers\Common\OrganisationDetailsController;
 use App\Http\Controllers\Pages\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,11 @@ Route::prefix('v1')->group(function () {
             Route::post('/create', 'createHomePageData');
             Route::post('/update/{id}', 'updateHomePageData');
         });
+    });
 
-        Route::get('/organisation-details', 'orgDetails');
-        Route::prefix('organisation-details')->middleware(['auth:api', 'role:admin'])->group(function () {
+    Route::prefix('organisation-details')->controller(OrganisationDetailsController::class)->group(function () {
+        Route::get('/', 'orgDetails');
+        Route::middleware(['auth:api', 'role:admin'])->group(function () {
             Route::post('/create', 'createOrganizationDetailsData');
             Route::post('/update/{id}', 'updateOrganizationDetailsData');
         });

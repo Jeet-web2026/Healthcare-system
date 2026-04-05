@@ -30,7 +30,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/', 'orgDetails');
         Route::middleware(['auth:api', 'role:admin'])->group(function () {
             Route::post('/create', 'createOrganizationDetailsData');
-            Route::post('/update/{id}', 'updateOrganizationDetailsData');
+            Route::patch('/update/{id}', 'updateOrganizationDetailsData');
         });
     });
 });

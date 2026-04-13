@@ -3,6 +3,7 @@
 namespace App\Services\Pages;
 
 use App\Enums\GlobalCachingEnum;
+use App\Http\Resources\Common\OrganisationdetailsResource;
 use App\Repository\Interface\CacheServiceInterface;
 use App\Repository\Interface\OrganisationDetailsManagementServiceInterface;
 use App\Repository\Interface\OrganisationDetailsRepositoryInterface;
@@ -18,7 +19,7 @@ class OrganisationDetailsManagementService implements OrganisationDetailsManagem
         return $this->cacheService->remember(
             GlobalCachingEnum::ORG_DETAILS->value,
             now()->addMinutes(5),
-            fn() => $this->organisationRepository->getOrganisationDetails()
+            fn() => OrganisationdetailsResource::make($this->organisationRepository->getOrganisationDetails())
         );
     }
 

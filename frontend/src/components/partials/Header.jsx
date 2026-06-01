@@ -5,7 +5,7 @@ const Header = ({ animatedClass }) => {
   const [data, setData] = useState([]);
   const organisationDetails = async () => {
     try {
-      const response = await api.get("/organisation-details");
+      const response = await api.get("/organisation-details", {});
       setData(response.data.data);
     } catch (error) {
       Swal.fire({
